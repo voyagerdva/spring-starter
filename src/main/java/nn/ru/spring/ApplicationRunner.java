@@ -1,10 +1,7 @@
 package nn.ru.spring;
 
 import nn.ru.spring.database.pool.ConnectionPool;
-import nn.ru.spring.database.repository.CompanyRepository;
-import nn.ru.spring.database.repository.UserRepository;
-import nn.ru.spring.ioc.Container;
-import nn.ru.spring.service.UserService;
+import nn.ru.spring.database.repository.CrudRepository;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,8 +19,8 @@ public class ApplicationRunner {
             ConnectionPool connectionPool = context.getBean("p1", ConnectionPool.class);
             System.out.println(connectionPool);
 
-            CompanyRepository companyRepository = context.getBean("companyRepository", CompanyRepository.class);
-            System.out.println(companyRepository);
+            CrudRepository companyRepository = context.getBean("companyRepository", CrudRepository.class);
+            System.out.println(companyRepository.findById(1));
         }
 
     }

@@ -1,4 +1,8 @@
 package nn.ru.spring.database.repository;
 
-public interface CrudRepository {
+import java.util.Optional;
+public interface CrudRepository<K, E> {
+    Optional<E> findById(K id);
+
+    void delete(E entity);
 }

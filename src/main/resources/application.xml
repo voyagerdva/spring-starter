@@ -11,6 +11,8 @@
     <context:property-placeholder location="application.properties"/>
 
     <bean class="nn.ru.spring.bpp.InjectBeanPostProcessor"/>
+    <bean class="nn.ru.spring.bpp.TransactionBeanPostProcessor"/>
+    <bean class="nn.ru.spring.bpp.AuditingBeanPostProcessor"/>
 
 
 <!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
@@ -32,6 +34,7 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
+    <bean id="pool2" class="nn.ru.spring.database.pool.ConnectionPool"/>
     <bean id="pool1" name="p1,p2,p3" class="nn.ru.spring.database.pool.ConnectionPool">
         <constructor-arg name="username" type="java.lang.String" ref="${db.username}"/>
         <constructor-arg name="properties" type="java.util.Map">
