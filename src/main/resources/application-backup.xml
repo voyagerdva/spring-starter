@@ -7,13 +7,7 @@
                             http://www.springframework.org/schema/context
                             http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <context:annotation-config/>
     <context:property-placeholder location="application.properties"/>
-
-    <bean class="nn.ru.spring.bpp.InjectBeanPostProcessor"/>
-
-
-<!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>-->
 
 <!--    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">-->
 <!--        <property name="locations" value="application.properties"/>-->
@@ -32,7 +26,9 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
-    <bean id="pool1" name="p1,p2,p3" class="nn.ru.spring.database.pool.ConnectionPool">
+    <bean id="pool1" name="p1,p2,p3" class="nn.ru.spring.database.pool.ConnectionPool"
+          init-method="init"
+          destroy-method="destroy">
         <constructor-arg name="username" type="java.lang.String" ref="${db.username}"/>
         <constructor-arg name="properties" type="java.util.Map">
             <null/>
@@ -61,7 +57,9 @@
         </property>
     </bean>
 
-    <bean id="companyRepository" class="nn.ru.spring.database.repository.CompanyRepository"/>
+    <bean id="companyRepository" class="nn.ru.spring.database.repository.CompanyRepository" factory-method="of">
+        <constructor-arg ref="pool1"/>
+    </bean>
 
 
 </beans>
