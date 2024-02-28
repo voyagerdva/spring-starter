@@ -1,6 +1,9 @@
 package nn.ru.spring.database.repository;
 
 import nn.ru.spring.database.pool.ConnectionPool;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class UserRepository {
     private final ConnectionPool connectionPool;
 

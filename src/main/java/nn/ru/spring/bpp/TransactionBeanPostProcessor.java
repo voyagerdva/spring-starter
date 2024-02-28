@@ -2,7 +2,9 @@ package nn.ru.spring.bpp;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -10,6 +12,7 @@ import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class TransactionBeanPostProcessor implements BeanPostProcessor {
 
     private final Map<String, Class<?>> transactionBeans = new HashMap<>();
