@@ -20,6 +20,7 @@ import org.springframework.stereotype.Component;
                 @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = CrudRepository.class),
                 @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com\\..+Repository")
         })
+
 public class ApplicationConfiguration {
 
     @Bean("pool2")

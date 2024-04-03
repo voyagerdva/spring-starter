@@ -1,6 +1,7 @@
 package nn.ru.spring.database.repository;
 
 import nn.ru.spring.bpp.Auditing;
+import nn.ru.spring.bpp.Second;
 import nn.ru.spring.bpp.Transaction;
 import nn.ru.spring.database.entity.Company;
 import nn.ru.spring.database.pool.ConnectionPool;
@@ -17,6 +18,7 @@ import java.util.Optional;
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Transaction
 @Auditing
+@Second
 public class CompanyRepository implements CrudRepository<Integer, Company> {
 
     private final ConnectionPool pool1;
