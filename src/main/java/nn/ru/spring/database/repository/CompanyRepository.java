@@ -1,5 +1,6 @@
 package nn.ru.spring.database.repository;
 
+import lombok.RequiredArgsConstructor;
 import nn.ru.spring.bpp.Auditing;
 import nn.ru.spring.bpp.Transaction;
 import nn.ru.spring.database.entity.Company;
@@ -8,28 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Transaction
 @Auditing
+@RequiredArgsConstructor
 public class CompanyRepository implements CrudRepository<Integer, Company> {
 
     private final ConnectionPool pool1;
     private final List<ConnectionPool> pools;
+    @Value("${db.pool.size}")
     private final Integer poolSize;
-
-    public CompanyRepository(ConnectionPool pool1,
-                             List<ConnectionPool> pools,
-                             @Value("${db.pool.size}") Integer poolSize) {
-        this.pool1 = pool1;
-        this.pools = pools;
-        this.poolSize = poolSize;
-    }
 
     @PostConstruct
     private void init() {
