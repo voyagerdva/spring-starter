@@ -1,6 +1,7 @@
 package nn.ru.spring.database.repository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import nn.ru.spring.bpp.Auditing;
 import nn.ru.spring.bpp.Transaction;
 import nn.ru.spring.database.entity.Company;
@@ -16,6 +17,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Repository
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Transaction
@@ -30,7 +32,7 @@ public class CompanyRepository implements CrudRepository<Integer, Company> {
 
     @PostConstruct
     private void init() {
-        System.out.println("init company repository");
+        log.warn("init company repository");
     }
 
     @Override
