@@ -23,8 +23,26 @@ spring.profiles.active: qa
 
 logging:
   level:
-    root: WARN
+    root: INFO
     nn.ru.spring.database.pool: INFO
+    org.springframework.jdbc.core: TRACE
   file:
     name: dmdev.log
-    path: E:\__PROJECT__\JAVA\DMDEV\spring-starter
+    path: E:\__PROJECT__\JAVA\DMDEV\logs
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  datasource:
+  url: jdbc:postgresql://localhost:5432/flight_repository
+  username: postgres
+  password: postgres
+  driver-class-name: org.pastgresql.Driver
+jpa:
+  properties.hibernate:
+    batch_size: 50
+    fetch_size: 50
+    show_sql: true
+    format_sql: true
+    hbm2ddl.auto: validate
