@@ -5,6 +5,6 @@
     <title>Bye</title>
 </head>
 <body>
-    Bye ${sessionScope.user.username}!
+    Bye ${sessionScope.userReadDto.username}!
 </body>
 </html>
